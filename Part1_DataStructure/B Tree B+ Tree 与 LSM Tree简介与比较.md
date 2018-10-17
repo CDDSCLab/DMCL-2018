@@ -36,10 +36,10 @@
 - 如果该结点的关键字个数已经到达了m-1个，那么根据B树的性质显然无法满足，需要将其进行分裂。分裂的规则是该结点分成两半，将中间的关键字进行提升，加入到父亲结点中，但是这又可能存在父亲结点也满员的情况，则不得不向上进行回溯，甚至是要对根结点进行分裂，那么整棵树都加了一层。
 
 其过程如下：
-![insert_1.png](resources/28EC0B7B0B720EAEBC649774F33C08E1.png =676x374)
-![insert_2.png](resources/A4A82A4A51F577AF49E02075D5D782EE.png =607x316)
-![insert_3.png](resources/A70F402B58125E53C7262A67B3BB4AF0.png =701x394)
-![insert_4.png](resources/60BCBE5847E3569095AB3556E47EBF6A.png =704x250)
+![insert_1.png](resources/28EC0B7B0B720EAEBC649774F33C08E1.png )
+![insert_2.png](resources/A4A82A4A51F577AF49E02075D5D782EE.png)
+![insert_3.png](resources/A70F402B58125E53C7262A67B3BB4AF0.png )
+![insert_4.png](resources/60BCBE5847E3569095AB3556E47EBF6A.png )
 
 ### 删除
 
@@ -58,9 +58,9 @@
 
 其过程如下：
 
-![delete_1.png](resources/71F95515F5D101C5EB00E14134D2A828.png =664x213)
-![delete_2.png](resources/C7EC36BF2D1404D62429857C35232008.png =683x197)
-![delete_3.png](resources/27E072353751603D267487A0337A79A2.png =652x381)
+![delete_1.png](resources/71F95515F5D101C5EB00E14134D2A828.png)
+![delete_2.png](resources/C7EC36BF2D1404D62429857C35232008.png)
+![delete_3.png](resources/27E072353751603D267487A0337A79A2.png)
 
 ------
 
@@ -96,23 +96,23 @@
 
 a）空树中插入5
 
-![plus_insert_1.png](resources/222381684AA8EDE7195B87D212AE86FA.png =93x33)
+![plus_insert_1.png](resources/222381684AA8EDE7195B87D212AE86FA.png)
 
 ------
 
 b）依次插入8，10，15
 
-![plus_insert_2.png](resources/A296F0635713266D1A7205222C349509.png =90x33)
+![plus_insert_2.png](resources/A296F0635713266D1A7205222C349509.png)
 
 ------
 
 c）插入16
 
-![plus_insert_3.png](resources/D05B047CD649DE5A1F3F2A778D8023ED.png =110x33)
+![plus_insert_3.png](resources/D05B047CD649DE5A1F3F2A778D8023ED.png)
 
 插入16后超过了关键字的个数限制，所以要进行分裂。在叶子结点分裂时，分裂出来的左结点2个记录，右边3个记录，中间key成为索引结点中的key，分裂后当前结点指向了父结点（根结点）。结果如下图所示。
 
-![plus_insert_4.png](resources/DCEB7674CD684E2471E396370AB72A3E.png =242x111)
+![plus_insert_4.png](resources/DCEB7674CD684E2471E396370AB72A3E.png)
 
 当然我们还有另一种分裂方式，给左结点3个记录，右结点2个记录，此时索引结点中的key就变为15。
 
@@ -120,17 +120,17 @@ c）插入16
 
 d）插入17
 
-![plus_insert_5.png](resources/3503FA91B9E830EAAF904A00ECC726F3.png =196x75)
+![plus_insert_5.png](resources/3503FA91B9E830EAAF904A00ECC726F3.png )
 
 ------
 
 e）插入18，插入后如下图所示
 
-![plus_insert_6.png](resources/37D57A42727ADD6A137E171F3FCD457E.png =242x119)
+![plus_insert_6.png](resources/37D57A42727ADD6A137E171F3FCD457E.png )
 
 当前结点的关键字个数大于5，进行分裂。分裂成两个结点，左结点2个记录，右结点3个记录，关键字16进位到父结点（索引类型）中，将当前结点的指针指向父结点。
 
-![plus_insert_7.png](resources/9754C5727EF36AF851A3DCBE03A8EE54.png =312x84)
+![plus_insert_7.png](resources/9754C5727EF36AF851A3DCBE03A8EE54.png )
 
 当前结点的关键字个数满足条件，插入结束。
 
@@ -138,21 +138,21 @@ e）插入18，插入后如下图所示
 
 f）插入若干数据后
 
-![plus_insert_8.png](resources/0556316014E7D5B35B11D75B8830C9BD.png =456x77)
+![plus_insert_8.png](resources/0556316014E7D5B35B11D75B8830C9BD.png )
 
 ------
 
 g）在上图中插入7，结果如下图所示
 
-![plus_insert_9.png](resources/2150EBC5DD222F29BBA60AD78285C962.png =457x76)
+![plus_insert_9.png](resources/2150EBC5DD222F29BBA60AD78285C962.png )
 
 当前结点的关键字个数超过4，需要分裂。左结点2个记录，右结点3个记录。分裂后关键字7进入到父结点中，将当前结点的指针指向父结点，结果如下图所示。
 
-![plus_insert_10.png](resources/651A7312BB3B2912755C2D276FE6AAD9.png =522x73)
+![plus_insert_10.png](resources/651A7312BB3B2912755C2D276FE6AAD9.png )
 
 当前结点的关键字个数超过4，需要继续分裂。左结点2个关键字，右结点2个关键字，关键字16进入到父结点中，将当前结点指向父结点，结果如下图所示。
 
-![plus_insert_11.png](resources/EB53F16E56921AB1BAC2EB129F0A2F5A.png =522x98)
+![plus_insert_11.png](resources/EB53F16E56921AB1BAC2EB129F0A2F5A.png )
 
 当前结点的关键字个数满足条件，插入结束。
 
@@ -182,13 +182,13 @@ g）在上图中插入7，结果如下图所示
 
 a）初始状态
 
-![plus_delete_1.png](resources/731B8DD709E995F6C173F3C6CA2480F7.png =522x98)
+![plus_delete_1.png](resources/731B8DD709E995F6C173F3C6CA2480F7.png)
 
 ------
 
 b）删除22,删除后结果如下图
 
-![plus_delete_2.png](resources/C77B37467342D19E58AC27E7236BCB7E.png =522x98)
+![plus_delete_2.png](resources/C77B37467342D19E58AC27E7236BCB7E.png )
 
 删除后叶子结点中key的个数大于等于2，删除结束
 
@@ -196,25 +196,24 @@ b）删除22,删除后结果如下图
 
 c）删除15，删除后的结果如下图所示
 
-![plus_delete_3.png](resources/5F4F8FF81B3D635A260EA4930BDCC659.png =522x130)
-
+![plus_delete_3.png](resources/5F4F8FF81B3D635A260EA4930BDCC659.png)
 删除后当前结点只有一个key,不满足条件，而兄弟结点有三个key，可以从兄弟结点借一个关键字为9的记录,同时更新将父结点中的关键字由10也变为9，删除结束。
 
-![plus_delete_4.png](resources/A0560C2623DCD8B77136EED9C0AD26E0.png =523x99)
+![plus_delete_4.png](resources/A0560C2623DCD8B77136EED9C0AD26E0.png )
 
 ------
 
 d）删除7，删除后的结果如下图所示
 
-![plus_delete_5.png](resources/17D21B319F85FF03A80726A8664AAD2B.png =614x152)
+![plus_delete_5.png](resources/17D21B319F85FF03A80726A8664AAD2B.png)
 
 当前结点关键字个数小于2，（左）兄弟结点中的也没有富余的关键字（当前结点还有个右兄弟，不过选择任意一个进行分析就可以了，这里我们选择了左边的），所以当前结点和兄弟结点合并，并删除父结点中的key，当前结点指向父结点。
 
-![plus_delete_6.png](resources/12862035FACEFEB696C9BA57C71091ED.png =522x102)
+![plus_delete_6.png](resources/12862035FACEFEB696C9BA57C71091ED.png)
 
 此时当前结点的关键字个数小于2，兄弟结点的关键字也没有富余，所以父结点中的关键字下移，和两个孩子结点合并，结果如下图所示。
 
-![plus_delete_7.png](resources/2D087CF2F8DA8663230A2ABD1FE79230.png =522x84)
+![plus_delete_7.png](resources/2D087CF2F8DA8663230A2ABD1FE79230.png )
 
 ------
 
@@ -282,50 +281,50 @@ LSM树 **插入数据**可以看作是一个N阶合并树。数据写操作（�
 例子：
 ------
 向LSM树中插入A E L R U，首先会插入到内存中的C0树上，这里使用AVL树，插入“A”，先项磁盘日志文件追加记录，然后再插入C0，
-![IMAGE](resources/DF77E1F49641389A90151E7DC5B629A2.jpg =1023x574)
+![IMAGE](resources/DF77E1F49641389A90151E7DC5B629A2.jpg )
 
 插入“E”，同样先追加日志再写内存，
-![IMAGE](resources/21CFA77ECF9AD06B736048A4D8973347.jpg =1022x596)
+![IMAGE](resources/21CFA77ECF9AD06B736048A4D8973347.jpg )
 
 继续插入“L”，旋转后如下，
-![IMAGE](resources/8B5273E5A1629FA13ED27CD76A33F149.jpg =1019x591)
+![IMAGE](resources/8B5273E5A1629FA13ED27CD76A33F149.jpg)
 
 假设此时触发合并，则因为C1还没有树，所以emptying block为空，直接从C0树中依次找最小的节点。filling block长度为4，这里假设磁盘块大小为4。
 开始找最小的节点，并放到filling block中，
-![IMAGE](resources/12B058208FA6369183D68A78762DD650.jpg =1013x583)
+![IMAGE](resources/12B058208FA6369183D68A78762DD650.jpg )
 
 继续找第二个节点，
-![IMAGE](resources/6EB8D92EB45232B44C330536B8EB35A3.jpg =1006x571)
+![IMAGE](resources/6EB8D92EB45232B44C330536B8EB35A3.jpg)
 
 以此类推，填满filling block，
-![IMAGE](resources/EA59FEA7F653518EDA80ED6360A9F1A6.jpg =996x571)
+![IMAGE](resources/EA59FEA7F653518EDA80ED6360A9F1A6.jpg)
 
 开始写入磁盘，C1树，
-![IMAGE](resources/F2BDBA03D1EBE609F4033CB156737138.jpg =994x572)
+![IMAGE](resources/F2BDBA03D1EBE609F4033CB156737138.jpg)
 
 继续插入B F N T，先分别写日志，然后插入到内存的C0树中，
-![IMAGE](resources/EA85CD5AEC4D35B415794BB457B998CB.jpg =1011x576)
+![IMAGE](resources/EA85CD5AEC4D35B415794BB457B998CB.jpg )
 
 假如此时进行合并，先加载C1的最左边叶子节点到emptying block，
-![IMAGE](resources/E8446544A1A9E984A8686E997DAFD76B.jpg =1012x588)
+![IMAGE](resources/E8446544A1A9E984A8686E997DAFD76B.jpg)
 
 接着对C0树的节点和emptying block进行合并排序，首先是“A”进入filling block，
-![IMAGE](resources/621F5E8087B413BA7970282B1062D070.jpg =1015x582)
+![IMAGE](resources/621F5E8087B413BA7970282B1062D070.jpg)
 
 然后是“B”，
-![IMAGE](resources/8B1E28C0C8D735A60E4E7B11664BBD59.jpg =1007x570)
+![IMAGE](resources/8B1E28C0C8D735A60E4E7B11664BBD59.jpg )
 
 合并排序最终结果为，
-![IMAGE](resources/1AE4E328E0115FC5AFC2DD92A4979758.jpg =989x583)
+![IMAGE](resources/1AE4E328E0115FC5AFC2DD92A4979758.jpg )
 
 将filling block追加到磁盘的新位置，将原来的节点删除掉，
-![IMAGE](resources/D523842B16F1E983F2168559195BCBF9.jpg =991x566)
+![IMAGE](resources/D523842B16F1E983F2168559195BCBF9.jpg)
 
 继续合并排序，再次填满filling block，
-![IMAGE](resources/29EFB59744DC3D1147B19F1F2F79BE58.jpg =1004x589)
+![IMAGE](resources/29EFB59744DC3D1147B19F1F2F79BE58.jpg )
 
 将filling block追加到磁盘的新位置，上一层的节点也要以磁盘块（或多个磁盘块）大小写入，尽量避开随机写。另外由于合并过程可能会导致上层节点的更新，可以暂时保存在内存，后面在适当时机写入。
-![IMAGE](resources/809FAD2447C1BED9348B759C074F57BF.jpg =1080x562)
+![IMAGE](resources/809FAD2447C1BED9348B759C074F57BF.jpg )
 
 ## 查找
 LSM树 **读数据** 磁盘中书的非子节点数据也被缓存到内存中。在需要进行读操作时，总是从内存中的排序树开始搜索，如果没有找到，就从磁盘上的排序树顺序查找。
@@ -335,13 +334,13 @@ LSM树 **读数据** 磁盘中书的非子节点数据也被缓存到内存中�
 ------
 查找总体思想是先找内存的C0树，找不到则找磁盘的C1树，然后是C2树，以此类推。
 假如要找“B”，先找C0树，没找到。
-![IMAGE](resources/E8E0F0B9AE586760C447CD9EB00F02F5.jpg =1080x579)
+![IMAGE](resources/E8E0F0B9AE586760C447CD9EB00F02F5.jpg )
 
 接着找C1树，从根节点开始，
-![IMAGE](resources/76ED4F851BA863C784F318212A772BCB.jpg =1080x563)
+![IMAGE](resources/76ED4F851BA863C784F318212A772BCB.jpg )
 
 找到“B”。
-![IMAGE](resources/21F65F03D362F3083B1E1E95FBCC85EE.jpg =1080x541)
+![IMAGE](resources/21F65F03D362F3083B1E1E95FBCC85EE.jpg )
 
 ## 删除
 LSM树 **删除数据** 前面讲了。LSM树所有操作都是在内存中进行的，那么删除并不是物理删除。而是一个逻辑删除，会在被删除的数据上打上一个标签，当内存中的数据达到阈值的时候，会与内存中的其他数据一起顺序写入磁盘。 这种操作会占用一定空间，但是LSM-Tree 提供了一些机制回收这些空间。
@@ -349,10 +348,10 @@ LSM树 **删除数据** 前面讲了。LSM树所有操作都是在内存中进�
 例子：
 -----
 比如要删除“U”，假设标为#的表示删除，则C0树的“U”节点变为，
-![IMAGE](resources/1B5DD6D61FF4C453D2E4CCFBB384D506.jpg =1080x585)
+![IMAGE](resources/1B5DD6D61FF4C453D2E4CCFBB384D506.jpg )
 
 而如果C0树不存在的记录，则在C0树中生成一个节点，并标为#，查找时就能再内存中得知该记录已被删除，无需去磁盘找了。比如要删除“B”，那么没有必要去磁盘执行删除操作，直接在C0树中插入一个“B”节点，并标为#。
-![IMAGE](resources/A3EBC2149902EFAC8F1FCB33CB5F158B.jpg =1080x563)
+![IMAGE](resources/A3EBC2149902EFAC8F1FCB33CB5F158B.jpg )
 
 
  
