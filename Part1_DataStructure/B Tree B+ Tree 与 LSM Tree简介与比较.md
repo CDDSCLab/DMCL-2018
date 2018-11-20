@@ -1,9 +1,12 @@
 # B Tree B+ Tree 与 LSM Tree
 
+
+
 # B树
------
+
 ## 背景
-&emsp;动态查找树主要有：[二叉查找树（Binary Search Tree）](http://blog.csdn.net/qq_35644234/article/details/64516551)，[平衡二叉查找树（Balanced Binary Search Tree）](http://blog.csdn.net/qq_35644234/article/details/66476853)，红黑树(Red-Black Tree )，B-tree/B+-tree/ B*-tree (B~Tree)。前三者是典型的二叉查找树结构，其查找的时间复杂度O(log2N)与树的深度相关，那么降低树的深度自然会提高查找效率。
+
+ 	动态查找树主要有：[二叉查找树（Binary Search Tree）](http://blog.csdn.net/qq_35644234/article/details/64516551)，[平衡二叉查找树（Balanced Binary Search Tree）](http://blog.csdn.net/qq_35644234/article/details/66476853)，红黑树(Red-Black Tree )，B-tree/B+-tree/ B*-tree (B~Tree)。前三者是典型的二叉查找树结构，其查找的时间复杂度O(log2N)与树的深度相关，那么降低树的深度自然会提高查找效率。
 
 ​	就是大规模数据存储中，实现索引查询这样一个实际背景下，树节点存储的元素数量是有限的（如果元素数量非常多的话，查找就退化成节点内部的线性查找了），这样导致**二叉查找树结构由于树的深度过大而造成磁盘I/O读写过于频繁，进而导致查询效率低下**，那么如何减少树的深度，一个基本的想法就是：**采用多叉树结构**（由于树节点元素数量是有限的，自然该节点的子树数量也就是有限的）。
 
@@ -23,6 +26,7 @@
 
 5、所有的叶子结点都位于同一层，或者说根结点到每个叶子结点的长度都相同。。
 
+ 
 
 ## 操作
 
@@ -36,10 +40,14 @@
 - 如果该结点的关键字个数已经到达了m-1个，那么根据B树的性质显然无法满足，需要将其进行分裂。分裂的规则是该结点分成两半，将中间的关键字进行提升，加入到父亲结点中，但是这又可能存在父亲结点也满员的情况，则不得不向上进行回溯，甚至是要对根结点进行分裂，那么整棵树都加了一层。
 
 其过程如下：
-![insert_1.png](resources/28EC0B7B0B720EAEBC649774F33C08E1.png )
-![insert_2.png](resources/A4A82A4A51F577AF49E02075D5D782EE.png)
-![insert_3.png](resources/A70F402B58125E53C7262A67B3BB4AF0.png )
-![insert_4.png](resources/60BCBE5847E3569095AB3556E47EBF6A.png )
+
+![insert_1](树图/insert_1.png)
+
+![insert_2](树图/insert_2.png)
+
+![insert_3](树图/insert_3.png)
+
+![insert_4](树图/insert_4.png)
 
 ### 删除
 
@@ -58,9 +66,11 @@
 
 其过程如下：
 
-![delete_1.png](resources/71F95515F5D101C5EB00E14134D2A828.png)
-![delete_2.png](resources/C7EC36BF2D1404D62429857C35232008.png)
-![delete_3.png](resources/27E072353751603D267487A0337A79A2.png)
+![delete_1](树图/delete_1.png)
+
+![delete_2](树图/delete_2.png)
+
+![delete_3](树图/delete_3.png)
 
 ------
 
@@ -78,7 +88,7 @@
 
 ## 操作
 
-其操作和B树的操作是类似的，不过需要注意的是：
+其操作和B树的操作是类似的，不过需要注意的是： 
 
 在增加值的时候，如果存在满员的情况，将选择结点中的值作为新的索引，加入到父节点，并且结点中的值不会因为作为了索引而减少，只是父结点关键字增多，会对子结点进行了拆分。
 
@@ -96,23 +106,23 @@
 
 a）空树中插入5
 
-![plus_insert_1.png](resources/222381684AA8EDE7195B87D212AE86FA.png)
+![plus_insert_1](树图/plus_insert_1.png)
 
 ------
 
 b）依次插入8，10，15
 
-![plus_insert_2.png](resources/A296F0635713266D1A7205222C349509.png)
+![plus_insert_2](树图/plus_insert_2.png)
 
 ------
 
 c）插入16
 
-![plus_insert_3.png](resources/D05B047CD649DE5A1F3F2A778D8023ED.png)
+![plus_insert_3](树图/plus_insert_3.png)
 
 插入16后超过了关键字的个数限制，所以要进行分裂。在叶子结点分裂时，分裂出来的左结点2个记录，右边3个记录，中间key成为索引结点中的key，分裂后当前结点指向了父结点（根结点）。结果如下图所示。
 
-![plus_insert_4.png](resources/DCEB7674CD684E2471E396370AB72A3E.png)
+![plus_insert_4](树图/plus_insert_4.png)
 
 当然我们还有另一种分裂方式，给左结点3个记录，右结点2个记录，此时索引结点中的key就变为15。
 
@@ -120,17 +130,17 @@ c）插入16
 
 d）插入17
 
-![plus_insert_5.png](resources/3503FA91B9E830EAAF904A00ECC726F3.png )
+![plus_insert_5](树图/plus_insert_5.png)
 
 ------
 
 e）插入18，插入后如下图所示
 
-![plus_insert_6.png](resources/37D57A42727ADD6A137E171F3FCD457E.png )
+![plus_insert_6](树图/plus_insert_6.png)
 
 当前结点的关键字个数大于5，进行分裂。分裂成两个结点，左结点2个记录，右结点3个记录，关键字16进位到父结点（索引类型）中，将当前结点的指针指向父结点。
 
-![plus_insert_7.png](resources/9754C5727EF36AF851A3DCBE03A8EE54.png )
+![plus_insert_7](树图/plus_insert_7.png)
 
 当前结点的关键字个数满足条件，插入结束。
 
@@ -138,21 +148,21 @@ e）插入18，插入后如下图所示
 
 f）插入若干数据后
 
-![plus_insert_8.png](resources/0556316014E7D5B35B11D75B8830C9BD.png )
+![plus_insert_8](树图/plus_insert_8.png)
 
 ------
 
 g）在上图中插入7，结果如下图所示
 
-![plus_insert_9.png](resources/2150EBC5DD222F29BBA60AD78285C962.png )
+![plus_insert_9](树图/plus_insert_9.png)
 
 当前结点的关键字个数超过4，需要分裂。左结点2个记录，右结点3个记录。分裂后关键字7进入到父结点中，将当前结点的指针指向父结点，结果如下图所示。
 
-![plus_insert_10.png](resources/651A7312BB3B2912755C2D276FE6AAD9.png )
+![plus_insert_10](树图/plus_insert_10.png)
 
 当前结点的关键字个数超过4，需要继续分裂。左结点2个关键字，右结点2个关键字，关键字16进入到父结点中，将当前结点指向父结点，结果如下图所示。
 
-![plus_insert_11.png](resources/EB53F16E56921AB1BAC2EB129F0A2F5A.png )
+![plus_insert_11](树图/plus_insert_11.png)
 
 当前结点的关键字个数满足条件，插入结束。
 
@@ -182,13 +192,13 @@ g）在上图中插入7，结果如下图所示
 
 a）初始状态
 
-![plus_delete_1.png](resources/731B8DD709E995F6C173F3C6CA2480F7.png)
+![plus_delete_1](树图/plus_delete_1.png)
 
 ------
 
 b）删除22,删除后结果如下图
 
-![plus_delete_2.png](resources/C77B37467342D19E58AC27E7236BCB7E.png )
+![plus_delete_2](树图/plus_delete_2.png)
 
 删除后叶子结点中key的个数大于等于2，删除结束
 
@@ -196,24 +206,25 @@ b）删除22,删除后结果如下图
 
 c）删除15，删除后的结果如下图所示
 
-![plus_delete_3.png](resources/5F4F8FF81B3D635A260EA4930BDCC659.png)
+![plus_delete_3](树图/delete_3.png)
+
 删除后当前结点只有一个key,不满足条件，而兄弟结点有三个key，可以从兄弟结点借一个关键字为9的记录,同时更新将父结点中的关键字由10也变为9，删除结束。
 
-![plus_delete_4.png](resources/A0560C2623DCD8B77136EED9C0AD26E0.png )
+![plus_delete_4](树图/plus_delete_4.png)
 
 ------
 
 d）删除7，删除后的结果如下图所示
 
-![plus_delete_5.png](resources/17D21B319F85FF03A80726A8664AAD2B.png)
+![plus_delete_5](树图/plus_delete_5.png)
 
 当前结点关键字个数小于2，（左）兄弟结点中的也没有富余的关键字（当前结点还有个右兄弟，不过选择任意一个进行分析就可以了，这里我们选择了左边的），所以当前结点和兄弟结点合并，并删除父结点中的key，当前结点指向父结点。
 
-![plus_delete_6.png](resources/12862035FACEFEB696C9BA57C71091ED.png)
+![plus_delete_6](树图/plus_delete_6.png)
 
 此时当前结点的关键字个数小于2，兄弟结点的关键字也没有富余，所以父结点中的关键字下移，和两个孩子结点合并，结果如下图所示。
 
-![plus_delete_7.png](resources/2D087CF2F8DA8663230A2ABD1FE79230.png )
+![plus_delete_7](树图/plus_delete_7.png)
 
 ------
 
@@ -271,87 +282,17 @@ LSM树（Log Structured Merge Tree，结构化合并树）的思想非常朴素�
 核心思想的核心就是**放弃部分读能力，换取写入的最大化能力，**放弃磁盘读性能来**换取写的顺序性**。极端的说，基于LSM树实现的HBase的写性能比Mysql高了一个数量级，读性能低了一个数量级。
 
 ## LSM操作
-LSM树，即日志结构合并树(Log-Structured Merge-Tree)。其实它并不属于一个具体的数据结构，它更多是一种数据结构的设计思想。
 
-## 删除
-LSM树 **插入数据**可以看作是一个N阶合并树。数据写操作（包括插入、修改、删除也是写）都在内存中进行。
+LSM树 **插入数据**可以看作是一个N阶合并树。数据写操作（包括插入、修改、删除也是写）都在内存中进行，
 
 数据首先会插入内存中的树。当内存树的数据量超过设定阈值后，会进行合并操作。合并操作会从左至右便利内存中树的子节点 与 磁盘中树的子节点并进行合并，会用最新更新的数据覆盖旧的数据（或者记录为不同版本）。当被合并合并数据量达到磁盘的存储页大小时。会将合并后的数据持久化到磁盘，同时更新父节点对子节点的指针。
 
-例子：
-------
-向LSM树中插入A E L R U，首先会插入到内存中的C0树上，这里使用AVL树，插入“A”，先项磁盘日志文件追加记录，然后再插入C0，
-![IMAGE](resources/DF77E1F49641389A90151E7DC5B629A2.jpg )
-
-插入“E”，同样先追加日志再写内存，
-![IMAGE](resources/21CFA77ECF9AD06B736048A4D8973347.jpg )
-
-继续插入“L”，旋转后如下，
-![IMAGE](resources/8B5273E5A1629FA13ED27CD76A33F149.jpg)
-
-假设此时触发合并，则因为C1还没有树，所以emptying block为空，直接从C0树中依次找最小的节点。filling block长度为4，这里假设磁盘块大小为4。
-开始找最小的节点，并放到filling block中，
-![IMAGE](resources/12B058208FA6369183D68A78762DD650.jpg )
-
-继续找第二个节点，
-![IMAGE](resources/6EB8D92EB45232B44C330536B8EB35A3.jpg)
-
-以此类推，填满filling block，
-![IMAGE](resources/EA59FEA7F653518EDA80ED6360A9F1A6.jpg)
-
-开始写入磁盘，C1树，
-![IMAGE](resources/F2BDBA03D1EBE609F4033CB156737138.jpg)
-
-继续插入B F N T，先分别写日志，然后插入到内存的C0树中，
-![IMAGE](resources/EA85CD5AEC4D35B415794BB457B998CB.jpg )
-
-假如此时进行合并，先加载C1的最左边叶子节点到emptying block，
-![IMAGE](resources/E8446544A1A9E984A8686E997DAFD76B.jpg)
-
-接着对C0树的节点和emptying block进行合并排序，首先是“A”进入filling block，
-![IMAGE](resources/621F5E8087B413BA7970282B1062D070.jpg)
-
-然后是“B”，
-![IMAGE](resources/8B1E28C0C8D735A60E4E7B11664BBD59.jpg )
-
-合并排序最终结果为，
-![IMAGE](resources/1AE4E328E0115FC5AFC2DD92A4979758.jpg )
-
-将filling block追加到磁盘的新位置，将原来的节点删除掉，
-![IMAGE](resources/D523842B16F1E983F2168559195BCBF9.jpg)
-
-继续合并排序，再次填满filling block，
-![IMAGE](resources/29EFB59744DC3D1147B19F1F2F79BE58.jpg )
-
-将filling block追加到磁盘的新位置，上一层的节点也要以磁盘块（或多个磁盘块）大小写入，尽量避开随机写。另外由于合并过程可能会导致上层节点的更新，可以暂时保存在内存，后面在适当时机写入。
-![IMAGE](resources/809FAD2447C1BED9348B759C074F57BF.jpg )
-
-## 查找
 LSM树 **读数据** 磁盘中书的非子节点数据也被缓存到内存中。在需要进行读操作时，总是从内存中的排序树开始搜索，如果没有找到，就从磁盘上的排序树顺序查找。
+
 在LSM树上进行一次数据更新不需要磁盘访问，在内存即可完成，速度远快于B+树。当数据访问以写操作为主，而读操作则集中在最近写入的数据上时，使用LSM树可以极大程度地减少磁盘的访问次数，加快访问速度。
 
-例子：
-------
-查找总体思想是先找内存的C0树，找不到则找磁盘的C1树，然后是C2树，以此类推。
-假如要找“B”，先找C0树，没找到。
-![IMAGE](resources/E8E0F0B9AE586760C447CD9EB00F02F5.jpg )
-
-接着找C1树，从根节点开始，
-![IMAGE](resources/76ED4F851BA863C784F318212A772BCB.jpg )
-
-找到“B”。
-![IMAGE](resources/21F65F03D362F3083B1E1E95FBCC85EE.jpg )
-
-## 删除
 LSM树 **删除数据** 前面讲了。LSM树所有操作都是在内存中进行的，那么删除并不是物理删除。而是一个逻辑删除，会在被删除的数据上打上一个标签，当内存中的数据达到阈值的时候，会与内存中的其他数据一起顺序写入磁盘。 这种操作会占用一定空间，但是LSM-Tree 提供了一些机制回收这些空间。
 
-例子：
------
-比如要删除“U”，假设标为#的表示删除，则C0树的“U”节点变为，
-![IMAGE](resources/1B5DD6D61FF4C453D2E4CCFBB384D506.jpg )
-
-而如果C0树不存在的记录，则在C0树中生成一个节点，并标为#，查找时就能再内存中得知该记录已被删除，无需去磁盘找了。比如要删除“B”，那么没有必要去磁盘执行删除操作，直接在C0树中插入一个“B”节点，并标为#。
-![IMAGE](resources/A3EBC2149902EFAC8F1FCB33CB5F158B.jpg )
 
 
  
