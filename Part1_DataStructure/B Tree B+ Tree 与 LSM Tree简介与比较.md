@@ -41,13 +41,13 @@
 
 其过程如下：
 
-![insert_1](树图/insert_1.png)
+![insert_1](resources/insert_1.png)
 
-![insert_2](树图/insert_2.png)
+![insert_2](resources/insert_2.png)
 
-![insert_3](树图/insert_3.png)
+![insert_3](resources/insert_3.png)
 
-![insert_4](树图/insert_4.png)
+![insert_4](resources/insert_4.png)
 
 ### 删除
 
@@ -66,11 +66,11 @@
 
 其过程如下：
 
-![delete_1](树图/delete_1.png)
+![delete_1](resources/delete_1.png)
 
-![delete_2](树图/delete_2.png)
+![delete_2](resources/delete_2.png)
 
-![delete_3](树图/delete_3.png)
+![delete_3](resources/delete_3.png)
 
 ------
 
@@ -106,23 +106,23 @@
 
 a）空树中插入5
 
-![plus_insert_1](树图/plus_insert_1.png)
+![plus_insert_1](resources/plus_insert_1.png)
 
 ------
 
 b）依次插入8，10，15
 
-![plus_insert_2](树图/plus_insert_2.png)
+![plus_insert_2](resources/plus_insert_2.png)
 
 ------
 
 c）插入16
 
-![plus_insert_3](树图/plus_insert_3.png)
+![plus_insert_3](resources/plus_insert_3.png)
 
 插入16后超过了关键字的个数限制，所以要进行分裂。在叶子结点分裂时，分裂出来的左结点2个记录，右边3个记录，中间key成为索引结点中的key，分裂后当前结点指向了父结点（根结点）。结果如下图所示。
 
-![plus_insert_4](树图/plus_insert_4.png)
+![plus_insert_4](resources/plus_insert_4.png)
 
 当然我们还有另一种分裂方式，给左结点3个记录，右结点2个记录，此时索引结点中的key就变为15。
 
@@ -130,17 +130,17 @@ c）插入16
 
 d）插入17
 
-![plus_insert_5](树图/plus_insert_5.png)
+![plus_insert_5](resources/plus_insert_5.png)
 
 ------
 
 e）插入18，插入后如下图所示
 
-![plus_insert_6](树图/plus_insert_6.png)
+![plus_insert_6](resources/plus_insert_6.png)
 
 当前结点的关键字个数大于5，进行分裂。分裂成两个结点，左结点2个记录，右结点3个记录，关键字16进位到父结点（索引类型）中，将当前结点的指针指向父结点。
 
-![plus_insert_7](树图/plus_insert_7.png)
+![plus_insert_7](resources/plus_insert_7.png)
 
 当前结点的关键字个数满足条件，插入结束。
 
@@ -148,21 +148,21 @@ e）插入18，插入后如下图所示
 
 f）插入若干数据后
 
-![plus_insert_8](树图/plus_insert_8.png)
+![plus_insert_8](resources/plus_insert_8.png)
 
 ------
 
 g）在上图中插入7，结果如下图所示
 
-![plus_insert_9](树图/plus_insert_9.png)
+![plus_insert_9](resources/plus_insert_9.png)
 
 当前结点的关键字个数超过4，需要分裂。左结点2个记录，右结点3个记录。分裂后关键字7进入到父结点中，将当前结点的指针指向父结点，结果如下图所示。
 
-![plus_insert_10](树图/plus_insert_10.png)
+![plus_insert_10](resources/plus_insert_10.png)
 
 当前结点的关键字个数超过4，需要继续分裂。左结点2个关键字，右结点2个关键字，关键字16进入到父结点中，将当前结点指向父结点，结果如下图所示。
 
-![plus_insert_11](树图/plus_insert_11.png)
+![plus_insert_11](resources/plus_insert_11.png)
 
 当前结点的关键字个数满足条件，插入结束。
 
@@ -192,13 +192,13 @@ g）在上图中插入7，结果如下图所示
 
 a）初始状态
 
-![plus_delete_1](树图/plus_delete_1.png)
+![plus_delete_1](resources/plus_delete_1.png)
 
 ------
 
 b）删除22,删除后结果如下图
 
-![plus_delete_2](树图/plus_delete_2.png)
+![plus_delete_2](resources/plus_delete_2.png)
 
 删除后叶子结点中key的个数大于等于2，删除结束
 
@@ -206,25 +206,25 @@ b）删除22,删除后结果如下图
 
 c）删除15，删除后的结果如下图所示
 
-![plus_delete_3](树图/delete_3.png)
+![plus_delete_3](resources/delete_3.png)
 
 删除后当前结点只有一个key,不满足条件，而兄弟结点有三个key，可以从兄弟结点借一个关键字为9的记录,同时更新将父结点中的关键字由10也变为9，删除结束。
 
-![plus_delete_4](树图/plus_delete_4.png)
+![plus_delete_4](resources/plus_delete_4.png)
 
 ------
 
 d）删除7，删除后的结果如下图所示
 
-![plus_delete_5](树图/plus_delete_5.png)
+![plus_delete_5](resources/plus_delete_5.png)
 
 当前结点关键字个数小于2，（左）兄弟结点中的也没有富余的关键字（当前结点还有个右兄弟，不过选择任意一个进行分析就可以了，这里我们选择了左边的），所以当前结点和兄弟结点合并，并删除父结点中的key，当前结点指向父结点。
 
-![plus_delete_6](树图/plus_delete_6.png)
+![plus_delete_6](resources/plus_delete_6.png)
 
 此时当前结点的关键字个数小于2，兄弟结点的关键字也没有富余，所以父结点中的关键字下移，和两个孩子结点合并，结果如下图所示。
 
-![plus_delete_7](树图/plus_delete_7.png)
+![plus_delete_7](resources/plus_delete_7.png)
 
 ------
 
