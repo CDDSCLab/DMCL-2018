@@ -51,7 +51,6 @@
 #### 错误率
 
 ​	当集合S={x1,x2,...,xn}的所有元素都被k个哈希函数映射到m位的位数组中时，这个位数组中某一位还是0的概率是：
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 $$
 p' = (1-1/m)^{kn} \approx e^{-kn/m}
 $$
