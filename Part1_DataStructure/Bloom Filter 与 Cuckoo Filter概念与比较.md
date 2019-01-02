@@ -51,15 +51,12 @@
 #### 错误率
 
 ​	当集合S={x1,x2,...,xn}的所有元素都被k个哈希函数映射到m位的位数组中时，这个位数组中某一位还是0的概率是：
-$$
-p' = (1-1/m)^{kn} \approx e^{-kn/m}
-$$
+
+![错误率图](resources/Bloom_Filter_error1.jpg)
 
 > 其中`1/m`表示任意一个哈希函数选中这一位标1的概率，用`1`减去`1/m`即是哈希一次都没有被选中这一位的概率，然后把S映射到位数组中，需要做kn次哈希，即可写出上面的公式，这里使用到近似公式
-> $$
-> \lim_{x->\infty}(1-1/x)^{-x} = e
-> $$
 >
+> ![错误率图](resources/Bloom_Filter_error2.jpg)
 
 ​	同理，位数组任意一位为1的概率约为1-e^(-kn/m)，而(1-e^(-kn/m))^k其实就是所谓的false positive rate，即k次哈希都刚好选中1的区域。
 
@@ -71,6 +68,8 @@ $$
 - 如果哈希函数个数少，那么位数组中的0就多
 
 设错误率为f，由前面已知错误率f = (1-e^(-kn/m))=e^(kln(1-e^(-kn/m))，令g = kln(1-e^(-kn/m)，则g为最小，错误率也取到最小。由于p = e^(-kn/m)，则
+
+![最优哈希函数个数](resources/Bloom_Filter_bestNum.jpg)
 $$
 g = (-m/n)ln(p)ln(1-p)
 $$
@@ -128,14 +127,13 @@ $$
 1. 算法特点：因为在插入过程中可能因为反复踢出无限循环下去，这时就需要进行一次循环踢出的限制，超出限制则认为过滤器容量不足，需要进行扩容。另外布谷鸟过滤器在bucket上存储的是key的`指纹`，主要是考虑到不同的key长度不定，节约空间。`fingerprint` 一般由key做hash得来，长度较短，一般为8-12bit，也可根据实际数据量调整。
 
 2. 寻找第二个bucket的方法：由于计算key的存储位置使用的时key本身的值，而存储时仅存储了fingerprint，因此当key被挤出，需要重新找位置时，通过指纹信息来找到第二个bucket
-   $$
-   h1(x) = hash(x),
-   h2(x) = h1(x) \bigoplus hash(x's fingerprint)
-   $$
+
+   ![图](resources/cuckoo_filter_bucket1.jpg)
+
    通过异或来实现，所以
-   $$
-   h(1) = h(2) \bigoplus Hash(x's fingerprint)
-   $$
+
+   ![图](resources/cuckoo_filter_bucket2.jpg)
+
    cuckoo filter采用只需要指纹信息就能找到第二个位置的方式， 技巧在这里：
 
    1. ​    loc1= HASH(key)
