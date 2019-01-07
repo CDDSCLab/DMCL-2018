@@ -16,7 +16,7 @@ Gossip protocol 最早是在 1987 年发表在 ACM 上的论文 《Epidemic Algo
 
 Gossip 过程是由种子节点发起，当一个种子节点有状态需要更新到网络中的其他节点时，它会随机的选择周围几个节点散播消息，收到消息的节点也会重复该过程，直至最终网络中所有的节点都收到了消息。这个过程可能需要一定的时间，由于不能保证某个时刻所有节点都收到消息，但是理论上最终所有节点都会收到消息，因此它是一个最终一致性协议。
 
-![img](/Users/laijie/Desktop/gossip/resources/work_process.jpg)
+![img](resources/work_process.jpg)
 
 **Gossip 演示**
 
@@ -38,7 +38,7 @@ Gossip 过程是由种子节点发起，当一个种子节点有状态需要更�
 
 
 
-![img](/Users/laijie/Desktop/gossip/resources/gossip_animate.gif)
+![img](resources/gossip_animate.gif)
 
 
 
@@ -68,7 +68,7 @@ Gossip 协议的过程极其简单，实现起来几乎没有太多复杂性。
 
 Márk Jelasity 在它的 《Gossip》一书中对其进行了归纳：
 
-![img](/Users/laijie/Desktop/gossip/resources/gossip_algorithm.jpg)
+![img](resources/gossip_algorithm.jpg)
 
 
 
@@ -154,13 +154,13 @@ Rumor-Mongering 是 SIR model，节点有三种状态，Suspective，Infective �
 
 1）则 Pull 的方式:
 
-![img](/Users/laijie/Desktop/gossip/resources/pull_format.jpg)
+![img](resources/pull_format.jpg)
 
 
 
 2）Push 方式：
 
-![img](/Users/laijie/Desktop/gossip/resources/push_format.jpg)
+![img](resources/push_format.jpg)
 
 
 
