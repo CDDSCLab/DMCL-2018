@@ -10,8 +10,9 @@ DMCL_2018级新生学习资料整理:smile:
 ## Part2
 &emsp;第二部分主要为数据库相关知识，内容有：
 - [事务](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part2_DB_Transaction/%E4%BA%8B%E5%8A%A1.md)
-- [日志及数据库恢复](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part2_DB_Transaction/%E6%97%A5%E5%BF%97%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D.md)
-- [并发控制](https://github.com)  :sparkles: **待补充**
+- [并发控制](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part2_DB_Transaction/%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6.md) 
+- [持久化与故障恢复](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part2_DB_Transaction/%E6%8C%81%E4%B9%85%E5%8C%96%E4%B8%8E%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D.md)
+
 
 ## Part3
 &emsp;第三部分主要为一致性相关，内容有：
