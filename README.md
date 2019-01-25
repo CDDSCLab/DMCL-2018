@@ -27,4 +27,4 @@ DMCL_2018级新生学习资料整理:smile:
 - [Raft](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part4_DistributedConsensus/raft-zh_cn.md) 
 - [Gossip](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part4_DistributedConsensus/gossip.md)
 - [BigTable](https://github.com)  :sparkles: **待补充**
-- [Dynamo](https://github.com)  :sparkles: **待补充**
+- [Dynamo](./Part4_DistributedConsensus/DynamoDB.md)
