@@ -23,8 +23,8 @@ DMCL_2018级新生学习资料整理:smile:
 
 ## Part4
 &emsp;第四部分主要为一致性相关，内容有：
-- [Paxos](https://github.com)  :sparkles: **待补充**
-- [Raft](https://github.com) 
+- [Paxos](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part4_DistributedConsensus/paxos%E8%BF%87%E7%A8%8B%E6%8E%A8%E5%AF%BC.md)
+- [Raft](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part4_DistributedConsensus/raft-zh_cn.md) 
 - [Gossip](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Part4_DistributedConsensus/gossip.md)
 - [BigTable](https://github.com)  :sparkles: **待补充**
 - [Dynamo](https://github.com)  :sparkles: **待补充**
