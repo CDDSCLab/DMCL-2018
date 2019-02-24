@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+  .watch{
+    background: #eee;
+    width: 700px;
+    padding: 2px 2px;
+    margin-top:15px;
+     border: 2px solid #eee;
+    border-radius: 5px 5px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  }
+</style>
+<script type="text/javascript" src="{{url_for('static',filename='jquery-3.3.1.min.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}">
+
+<body>
+  <div>  
+    <button @click='writeValue'  class="btn btn-danger" style="-webkit-transform: rotate(45deg);">8000</button>
+</div>
+
+
+<div class="watch">
+  <p text-align="center">
+ <form class="form-inline">
+       <span class="input-group-text" id="basic-addon1">value</span>
+     <input class="form-control mr-sm-2" type="search" placeholder="Value" aria-label="Search" v-model="value">
+  </form>
+  </p>
+  <p>
+  	<button @click='writeValue'  class="btn btn-outline-success my-2 my-sm-1">Update</button>
+  </p>
+    <div class="alert alert-success" role="alert"><p>{% raw %}
+{{res}}
+{% endraw %}
+</p>
+</div>
+{% raw %}
+ <input class="form-control mr-sm-2" type="search" placeholder="tableID" aria-label="Search" v-model="tableID">
+ <button @click='getValue'  class="btn btn-outline-success my-2 my-sm-1">读取日志</button>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">时间戳</th>
+      <th scope="col">客户id</th>
+      <th scope="col">任期</th>
+      <th scope="col">数据</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  v-for="item in logs">
+      <td>{{item.timestamp}}</td>
+      <td>{{item.client}}</td>
+      <td>{{item.term}}</td>
+      <td>{{item.data}}</td>
+    </tr>
+    </tbody>
+</table>
+{% endraw %}
+</div>
+
+</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+
+<script type="text/javascript" src="{{url_for('static',filename='vue.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static',filename='app.js')}}"></script>
+</html>

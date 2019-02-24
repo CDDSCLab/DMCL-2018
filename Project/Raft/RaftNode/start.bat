@@ -1,0 +1,5 @@
+start cmd /k "python .\Node.py 8000"
+start cmd /k "python .\Node.py 8001"
+start cmd /k "python .\Node.py 8002"
+start cmd /k "python .\Node.py 8003"
+start cmd /k "python .\Node.py 8004"

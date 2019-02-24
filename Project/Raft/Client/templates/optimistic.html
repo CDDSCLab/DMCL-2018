@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+  .watch{
+
+    padding: 2px 2px;
+    width: 700px;
+    margin-top:15px;
+    border: 1px solid #eee;
+    border-radius: 5px 5px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  }
+</style>
+<script type="text/javascript" src="{{url_for('static',filename='jquery-3.3.1.min.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}">
+
+<body>
+<div class="watch">
+  事务号{% raw %}
+  {{trans_id}}
+  {% endraw %}
+ <form class="form-inline">
+     <span class="input-group-text" id="basic-addon1">name</span>
+    <input class="form-control mr-sm-2" type="search" placeholder="Name" aria-label="Search" v-model="name">
+       <span class="input-group-text" id="basic-addon1">value</span>
+     <input class="form-control mr-sm-2" type="search" placeholder="Value" aria-label="Search" v-model="value">
+  </form>
+  <p>
+    <button @click='register'  class="btn btn-outline-primary my-2 my-sm-0">Start</button>
+    <button @click='submitTrans'  class="btn btn-outline-success my-2 my-sm-1">Commit</button>
+  </p>
+
+  <p>
+  	<button @click='getValue'  class="btn btn-outline-primary my-2 my-sm-0">Read</button>
+  	<button @click='writeValue'  class="btn btn-outline-success my-2 my-sm-1">Write</button>
+    <button @click='addValue'  class="btn btn-outline-warning my-1 my-sm-2">Add</button>
+  </p>
+    <div class="alert alert-success" role="alert"><p>{% raw %}
+{{res}}
+  {% endraw %}</p></div>
+
+</div>
+<div class="watch">
+  事务号{% raw %}
+  {{trans_id}}
+  {% endraw %}
+ <form class="form-inline">
+     <span class="input-group-text" id="basic-addon1">name</span>
+    <input class="form-control mr-sm-2" placeholder="Name" aria-label="Search" v-model="name">
+       <span class="input-group-text" id="basic-addon1">value</span>
+     <input class="form-control mr-sm-2"placeholder="Value" aria-label="Search" v-model="value">
+  </form>
+ <p>
+    <button @click='register'  class="btn btn-outline-primary my-2 my-sm-0">Start</button>
+    <button @click='submitTrans'  class="btn btn-outline-success my-2 my-sm-1">Commit</button>
+  </p>
+
+  <p>
+    <button @click='getValue'  class="btn btn-outline-primary my-2 my-sm-0">Read</button>
+    <button @click='writeValue'  class="btn btn-outline-success my-2 my-sm-1">Write</button>
+    <button @click='addValue'  class="btn btn-outline-warning my-1 my-sm-2">Add</button>
+  </p>
+    <div class="alert alert-success" role="alert"><p>{% raw %}
+{{res}}
+  {% endraw %}</p></div>
+
+</div>
+<div class="watch">
+  事务号{% raw %}
+  {{trans_id}}
+  {% endraw %}
+ <form class="form-inline">
+     <span class="input-group-text" id="basic-addon1">name</span>
+    <input class="form-control mr-sm-2" type="search" placeholder="Name" aria-label="Search" v-model="name">
+       <span class="input-group-text" id="basic-addon1">value</span>
+     <input class="form-control mr-sm-2" type="search" placeholder="Value" aria-label="Search" v-model="value">
+  </form>
+ <p>
+    <button @click='register'  class="btn btn-outline-primary my-2 my-sm-0">Start</button>
+    <button @click='submitTrans'  class="btn btn-outline-success my-2 my-sm-1">Commit</button>
+  </p>
+
+  <p>
+    <button @click='getValue'  class="btn btn-outline-primary my-2 my-sm-0">Read</button>
+    <button @click='writeValue'  class="btn btn-outline-success my-2 my-sm-1">Write</button>
+    <button @click='addValue'  class="btn btn-outline-warning my-1 my-sm-2">Add</button>
+  </p>
+    <div class="alert alert-success" role="alert"><p>{% raw %}
+{{res}}
+  {% endraw %}</p></div>
+
+</div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+
+<script type="text/javascript" src="{{url_for('static',filename='vue.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static',filename='optimistic.js')}}"></script>
+</html>
