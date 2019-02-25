@@ -1,0 +1,97 @@
+# CAP定理
+
+在[理论计算机科学](https://zh.wikipedia.org/wiki/%E7%90%86%E8%AB%96%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8)中，**CAP****定理**（CAP theorem），又被称作**布鲁尔定理**（Brewer's theorem），它指出对于一个[分布式计算系统](https://zh.wikipedia.org/wiki/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97)来说，不可能同时满足以下三点：
+
+·         一致性（**C**onsistency） （等同于所有节点访问同一份最新的数据副本）
+
+·         [可用性](https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%94%A8%E6%80%A7)（**A**vailability）（每次请求都能获取到非错的响应——但是不保证获取的数据为最新数据）
+
+·         [分区容错性](https://zh.wikipedia.org/w/index.php?title=%E7%BD%91%E7%BB%9C%E5%88%86%E5%8C%BA&action=edit&redlink=1)（**P**artition tolerance）（以实际效果而言，分区相当于对通信的时限要求。系统如果不能在时限内达成数据一致性，就意味着发生了分区的情况，必须就当前操作在C和A之间做出选择。）
+
+根据定理，分布式系统只能满足三项中的两项而不可能满足全部三项[[4\]](https://zh.wikipedia.org/wiki/CAP%E5%AE%9A%E7%90%86#cite_note-4)。理解CAP理论的最简单方式是想象两个节点分处分区两侧。允许至少一个节点更新状态会导致数据不一致，即丧失了C性质。如果为了保证数据一致性，将分区一侧的节点设置为不可用，那么又丧失了A性质。除非两个节点可以互相通信，才能既保证C又保证A，这又会导致丧失P性质。
+
+ 
+
+ 
+
+分布式系统（distributed system）正变得越来越重要，大型网站几乎都是分布式的。
+
+分布式系统的最大难点，就是各个节点的状态如何同步。CAP 定理是这方面的基本定理，也是理解分布式系统的起点。
+
+本文介绍该定理。它其实很好懂，而且是显而易见的。下面的内容主要参考了 Michael Whittaker 的[文章](https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/)。
+
+## 一、分布式系统的三个指标
+
+![https://www.wangbase.com/blogimg/asset/201807/bg2018071607.jpg](file:///C:/Users/KARMAN~1/AppData/Local/Temp/msohtmlclip1/01/clip_image001.jpg)
+
+1998年，加州大学的计算机科学家 Eric Brewer 提出，分布式系统有三个指标。
+
+- Consistency
+- Availability
+- Partition tolerance
+
+它们的第一个字母分别是 C、A、P。
+
+Eric Brewer 说，这三个指标不可能同时做到。这个结论就叫做 CAP 定理。
+
+## 二、Partition tolerance
+
+先看 Partition tolerance，中文叫做"分区容错"。
+
+大多数分布式系统都分布在多个子网络。每个子网络就叫做一个区（partition）。分区容错的意思是，区间通信可能失败。比如，一台服务器放在中国，另一台服务器放在美国，这就是两个区，它们之间可能无法通信。
+
+![https://www.wangbase.com/blogimg/asset/201807/bg2018071601.png](file:///C:/Users/KARMAN~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
+
+上图中，G1 和 G2 是两台跨区的服务器。G1 向 G2 发送一条消息，G2 可能无法收到。系统设计的时候，必须考虑到这种情况。
+
+一般来说，分区容错无法避免，因此可以认为 CAP 的 P 总是成立。CAP 定理告诉我们，剩下的 C 和 A 无法同时做到。
+
+## 三、Consistency
+
+Consistency 中文叫做"一致性"。意思是，写操作之后的读操作，必须返回该值。举例来说，某条记录是 v0，用户向 G1 发起一个写操作，将其改为 v1。
+
+![https://www.wangbase.com/blogimg/asset/201807/bg2018071602.png](file:///C:/Users/KARMAN~1/AppData/Local/Temp/msohtmlclip1/01/clip_image003.png)
+
+接下来，用户的读操作就会得到 v1。这就叫一致性。
+
+![https://www.wangbase.com/blogimg/asset/201807/bg2018071603.png](file:///C:/Users/KARMAN~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png)
+
+问题是，用户有可能向 G2 发起读操作，由于 G2 的值没有发生变化，因此返回的是 v0。G1 和 G2 读操作的结果不一致，这就不满足一致性了。
+
+![https://www.wangbase.com/blogimg/asset/201807/bg2018071604.png](file:///C:/Users/KARMAN~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg)
+
+为了让 G2 也能变为 v1，就要在 G1 写操作的时候，让 G1 向 G2 发送一条消息，要求 G2 也改成 v1。
+
+![https://www.wangbase.com/blogimg/asset/201807/bg2018071605.png](file:///C:/Users/KARMAN~1/AppData/Local/Temp/msohtmlclip1/01/clip_image007.png)
+
+这样的话，用户向 G2 发起读操作，也能得到 v1。
+
+![https://www.wangbase.com/blogimg/asset/201807/bg2018071606.png](file:///C:/Users/KARMAN~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png)
+
+## 四、Availability
+
+Availability 中文叫做"可用性"，意思是只要收到用户的请求，服务器就必须给出回应。
+
+用户可以选择向 G1 或 G2 发起读操作。不管是哪台服务器，只要收到请求，就必须告诉用户，到底是 v0 还是 v1，否则就不满足可用性。
+
+## 五、Consistency 和 Availability 的矛盾
+
+一致性和可用性，为什么不可能同时成立？答案很简单，因为可能通信失败（即出现分区容错）。
+
+如果保证 G2 的一致性，那么 G1 必须在写操作时，锁定 G2 的读操作和写操作。只有数据同步后，才能重新开放读写。锁定期间，G2 不能读写，没有可用性不。
+
+如果保证 G2 的可用性，那么势必不能锁定 G2，所以一致性不成立。
+
+综上所述，G2 无法同时做到一致性和可用性。系统设计时只能选择一个目标。如果追求一致性，那么无法保证所有节点的可用性；如果追求所有节点的可用性，那就没法做到一致性。
+
+
+
+在什么场合，可用性高于一致性？
+
+举例来说，发布一张网页到 CDN，多个服务器有这张网页的副本。后来发现一个错误，需要更新网页，这时只能每个服务器都更新一遍。
+
+一般来说，网页的更新不是特别强调一致性。短时期内，一些用户拿到老版本，另一些用户拿到新版本，问题不会特别大。当然，所有人最终都会看到新版本。所以，这个场合就是可用性高于一致性。
+
+ 
+
+ 
