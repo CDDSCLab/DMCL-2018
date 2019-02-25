@@ -22,8 +22,7 @@
 
 ## 一、分布式系统的三个指标
 
-![https://www.wangbase.com/blogimg/asset/201807/bg2018071607.jpg]
-(https://www.wangbase.com/blogimg/asset/201807/bg2018071607.jpg)
+![https://www.wangbase.com/blogimg/asset/201807/bg2018071607.jpg](https://www.wangbase.com/blogimg/asset/201807/bg2018071607.jpg)
 
 1998年，加州大学的计算机科学家 Eric Brewer 提出，分布式系统有三个指标。
 
