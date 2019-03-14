@@ -34,5 +34,5 @@ DMCL_2018级新生学习资料整理:smile:
 ## 项目
 - [BloomFilter and CuckooFilter](./Project/BloomFilter_CuckooFilter)
 - [ConstencyControl](./Project/ConcurrencyControl)
-- [HashRing](#)
+- [HashRing](https://github.com/Mclarenyang/ConsistentHash)
 - [Raft](./Project/Raft)
