@@ -8,7 +8,8 @@
 ![img](http://upload-images.jianshu.io/upload_images/6954572-f8013917eb15a30b.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-9c4fef4f6d1ceb06.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-64618ee347956b6a.jpg)
-————————————
+
+------
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-89ebb111297df0dc.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-d851326d08eefd9e.jpg)
@@ -19,7 +20,8 @@
 ![img](http://upload-images.jianshu.io/upload_images/6954572-fb04799f1946f3e1.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-9c787142599f0ae7.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-ad8f160b1da92620.jpg)
-————————————
+
+------
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-55748da8c917e161.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-966ebab6d3bae295.jpg)
@@ -35,24 +37,33 @@
 ![img](http://upload-images.jianshu.io/upload_images/6954572-4c882b53e59e75c9.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-0951c4a92f287c47.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-cb98a5a1ca7ebf60.jpg)
-**二叉查找树的结构：**
+
+------
+
+**二叉查找树的结构**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-8144d32410741c98.jpg)
-**第1次磁盘IO：**
+
+**第1次磁盘IO**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-6e584a37f6503ca6.jpg)
+
 **第2次磁盘IO：**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-33d980ada7f6f3e7.jpg)
+
 **第3次磁盘IO：**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-dc910ea8ddc1c14c.jpg)
+
 **第4次磁盘IO：**
 
-![img](http://upload-images.jianshu.io/upload_images/6954572-a4750b5df691763b.jpg)![img](http://upload-images.jianshu.io/upload_images/6954572-b0a656e23c613992.jpg)
+![img](http://upload-images.jianshu.io/upload_images/6954572-a4750b5df691763b.jpg)
+![img](http://upload-images.jianshu.io/upload_images/6954572-b0a656e23c613992.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-a918bc6a7f27c3f5.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-f7acd17b5985c070.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-531ffc0604adfa6a.jpg)
+
 **下面来具体介绍一下B-树（Balance Tree），一个m阶的B树具有如下几个特征：**
 
 1.根结点至少有两个子女。
@@ -72,9 +83,11 @@
 ![img](http://upload-images.jianshu.io/upload_images/6954572-e4609b4c874c63da.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-b6dadfdf6ab7f53f.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-9b539a438510b6a3.jpg)
+
 **第1次磁盘IO：**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-1d4cd95e0071b14b.jpg)
+
 **在内存中定位（和9比较）：**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-0149fbe222e0bcd9.jpg)
@@ -84,12 +97,14 @@
 **第2次磁盘IO：**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-c0d8d093477b127b.jpg)
+
 **在内存中定位（和2，6比较）：**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-7caa74fa6f66803e.jpg)
 第3次磁盘IO：
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-2ec1b5ac09af8bb2.jpg)
+
 **在内存中定位（和3，5比较）：**
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-34c873ebfba26681.jpg)
@@ -113,6 +128,7 @@
 自顶向下查找元素11的节点位置。
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-3788235572c9fc99.jpg)
+
 删除11后，节点12只有一个孩子，不符合B树规范。因此找出12,13,15三个节点的中位数13，取代节点12，而节点12自身下移成为第一个孩子。（这个过程称为**左旋**）
 
 ![img](http://upload-images.jianshu.io/upload_images/6954572-707464cf091ec504.jpg)
@@ -120,6 +136,6 @@
 ![img](http://upload-images.jianshu.io/upload_images/6954572-5fce73f84f44bfba.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-0a159f04aa51c157.jpg)
 ![img](http://upload-images.jianshu.io/upload_images/6954572-3040eec9263ce0af.jpg)
-
+------
 
 注：*由于原始网站未能正常打开，本文图片加载自简书*
