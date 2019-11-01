@@ -22,7 +22,7 @@ DMCL_2018级新生学习资料整理:smile:
 - [一致性hash环以及chord环](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Theory/Part3_Consistency/%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E5%92%8Cchord%E7%8E%AF.md)
 - [CAP&&BASE](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Theory/Part3_Consistency/CAP%E5%AE%9A%E7%90%86.md)
 - [2PC/3PC](https://github.com/dmclNewbee302/DMCL-2018/blob/master/Theory/Part3_Consistency/2PC_3PC.md)
-- [拜占庭将军问题](https://github.com/dmclNewbee302/DMCL2018/blob/master/Theory/Part3_Consistency/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98.md)
+- [拜占庭将军问题](./Theory/Part3_Consistency/拜占庭将军问题.md)
 
 ### Part4
 &emsp;第四部分主要为一致性相关，内容有：
